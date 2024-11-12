@@ -1,101 +1,71 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { Code, Users, Calendar, BookOpen, MessageSquare, ChevronDown } from 'lucide-react'
+
+const KufeWebsite = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-[#036b3f] text-white font-sans">
+      {/* Navigation */}
+      <nav className="bg-black p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-2xl font-bold">KUFE</div>
+          <ul className="flex space-x-6">
+            <li>소개</li>
+            <li>활동</li>
+            <li>프로젝트</li>
+            <li>스터디</li>
+            <li>커뮤니티</li>
+            <li className="bg-[#b0cda6] text-black px-3 py-1 rounded">가입하기</li>
+          </ul>
+        </div>
+      </nav>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Main Content */}
+      <main className="container mx-auto mt-20 flex flex-col items-center">
+        <h1 className="text-6xl font-bold mb-4">KUFE</h1>
+        <p className="text-2xl mb-8">건국대학교 프론트엔드 개발자 커뮤니티</p>
+        <p className="text-xl mb-12">함께 성장하는 프론트엔드 개발의 중심</p>
+
+        {/* Feature Icons */}
+        <div className="flex justify-center space-x-12 mb-16">
+          <div className="flex flex-col items-center">
+            <Code size={48} className="mb-2" />
+            <span>코딩 세션</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Users size={48} className="mb-2" />
+            <span>네트워킹</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Calendar size={48} className="mb-2" />
+            <span>정기 모임</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <BookOpen size={48} className="mb-2" />
+            <span>스터디</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <MessageSquare size={48} className="mb-2" />
+            <span>멘토링</span>
+          </div>
+        </div>
+
+        {/* Abstract Shapes - Representing different frontend technologies */}
+        <div className="relative w-full h-64">
+          <div className="absolute top-0 left-0 w-32 h-32 bg-blue-400 rounded-lg transform rotate-45" title="React"></div>
+          <div className="absolute top-10 left-24 w-24 h-24 bg-green-400 rounded-full" title="Vue.js"></div>
+          <div className="absolute bottom-0 right-0 w-40 h-40 bg-yellow-300 rounded-lg transform -rotate-12" title="JavaScript"></div>
+          <div className="absolute bottom-10 right-36 w-16 h-16 bg-red-400 rounded-full" title="Angular"></div>
+          <div className="absolute bottom-0 left-1/2 w-28 h-28 bg-purple-400 rounded-lg transform translate-x-1/2" title="CSS"></div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="mt-12 animate-bounce">
+          <ChevronDown size={32} />
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
+
+export default KufeWebsite
