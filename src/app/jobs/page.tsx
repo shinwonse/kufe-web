@@ -5,23 +5,7 @@ import { Search, Filter, ChevronRight } from 'lucide-react'
 const JobsPage = () => {
   return (
     <div className="min-h-screen bg-[#036b3f] text-white font-sans">
-      {/* Navigation */}
-      <nav className="bg-black p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold">KUFE</div>
-          <ul className="flex space-x-6">
-            <li>소개</li>
-            <li>활동</li>
-            <li>프로젝트</li>
-            <li>스터디</li>
-            <li>커뮤니티</li>
-            <li className="bg-[#b0cda6] text-black px-3 py-1 rounded">가입하기</li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="container mx-auto mt-10 px-4">
+      <main className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8">프론트엔드 개발자 채용 공고</h1>
 
         {/* Search and Filter */}

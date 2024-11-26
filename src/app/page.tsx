@@ -5,27 +5,10 @@ import { Code, Users, Calendar, BookOpen, MessageSquare, ChevronDown } from 'luc
 const KufeWebsite = () => {
   return (
     <div className="min-h-screen bg-[#036b3f] text-white font-sans">
-      {/* Navigation */}
-      <nav className="bg-black p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold">KUFE</div>
-          <ul className="flex space-x-6">
-            <li>소개</li>
-            <li>활동</li>
-            <li>프로젝트</li>
-            <li>스터디</li>
-            <li>커뮤니티</li>
-            <li className="bg-[#b0cda6] text-black px-3 py-1 rounded">가입하기</li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="container mx-auto mt-20 flex flex-col items-center">
+      <main className="container mx-auto flex flex-col items-center">
         <h1 className="text-6xl font-bold mb-4">KUFE</h1>
         <p className="text-2xl mb-8">건국대학교 프론트엔드 개발자 커뮤니티</p>
         <p className="text-xl mb-12">함께 성장하는 프론트엔드 개발의 중심</p>
-
         {/* Feature Icons */}
         <div className="flex justify-center space-x-12 mb-16">
           <div className="flex flex-col items-center">
