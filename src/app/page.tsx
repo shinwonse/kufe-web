@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { Code, Users, Calendar, BookOpen, MessageSquare, ChevronDown } from 'lucide-react'
+import { BookOpen, Calendar, ChevronDown, Code, MessageSquare, Users } from 'lucide-react';
 
 const KufeWebsite = () => {
   return (
-    <div className="min-h-screen bg-[#036b3f] text-white font-sans">
+    <div className="min-h-screen bg-[#036b3f] font-sans text-white">
       <main className="container mx-auto flex flex-col items-center">
-        <h1 className="text-6xl font-bold mb-4">KUFE</h1>
-        <p className="text-2xl mb-8">건국대학교 프론트엔드 개발자 커뮤니티</p>
-        <p className="text-xl mb-12">함께 성장하는 프론트엔드 개발의 중심</p>
+        <h1 className="mb-4 text-6xl font-bold">KUFE</h1>
+        <p className="mb-8 text-2xl">건국대학교 프론트엔드 개발자 커뮤니티</p>
+        <p className="mb-12 text-xl">함께 성장하는 프론트엔드 개발의 중심</p>
         {/* Feature Icons */}
-        <div className="flex justify-center space-x-12 mb-16">
+        <div className="mb-16 flex justify-center space-x-12">
           <div className="flex flex-col items-center">
             <Code size={48} className="mb-2" />
             <span>코딩 세션</span>
@@ -34,12 +34,27 @@ const KufeWebsite = () => {
         </div>
 
         {/* Abstract Shapes - Representing different frontend technologies */}
-        <div className="relative w-full h-64">
-          <div className="absolute top-0 left-0 w-32 h-32 bg-blue-400 rounded-lg transform rotate-45" title="React"></div>
-          <div className="absolute top-10 left-24 w-24 h-24 bg-green-400 rounded-full" title="Vue.js"></div>
-          <div className="absolute bottom-0 right-0 w-40 h-40 bg-yellow-300 rounded-lg transform -rotate-12" title="JavaScript"></div>
-          <div className="absolute bottom-10 right-36 w-16 h-16 bg-red-400 rounded-full" title="Angular"></div>
-          <div className="absolute bottom-0 left-1/2 w-28 h-28 bg-purple-400 rounded-lg transform translate-x-1/2" title="CSS"></div>
+        <div className="relative h-64 w-full">
+          <div
+            className="absolute left-0 top-0 size-32 rotate-45 rounded-lg bg-blue-400"
+            title="React"
+          ></div>
+          <div
+            className="absolute left-24 top-10 size-24 rounded-full bg-green-400"
+            title="Vue.js"
+          ></div>
+          <div
+            className="absolute bottom-0 right-0 size-40 -rotate-12 rounded-lg bg-yellow-300"
+            title="JavaScript"
+          ></div>
+          <div
+            className="absolute bottom-10 right-36 size-16 rounded-full bg-red-400"
+            title="Angular"
+          ></div>
+          <div
+            className="absolute bottom-0 left-1/2 size-28 translate-x-1/2 rounded-lg bg-purple-400"
+            title="CSS"
+          ></div>
         </div>
 
         {/* Scroll Indicator */}
@@ -48,7 +63,7 @@ const KufeWebsite = () => {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default KufeWebsite
+export default KufeWebsite;

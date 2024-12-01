@@ -1,45 +1,50 @@
-'use client'
+'use client';
 
-import { Search, Filter, ChevronRight } from 'lucide-react'
+import { ChevronRight, Filter, Search } from 'lucide-react';
 
-const ArticlePage = () =>  {
+const ArticlePage = () => {
   return (
-    <div className="min-h-screen bg-[#036b3f] text-white font-sans">
+    <div className="min-h-screen bg-[#036b3f] font-sans text-white">
       {/* Main Content */}
       <main className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">개발 아티클</h1>
+        <h1 className="mb-8 text-4xl font-bold">개발 아티클</h1>
 
         {/* Search and Filter */}
-        <div className="flex mb-8 space-x-4">
-          <div className="relative flex-grow">
+        <div className="mb-8 flex space-x-4">
+          <div className="relative grow">
             <input
               type="text"
               placeholder="아티클 검색..."
-              className="w-full p-2 pl-10 rounded bg-white text-black"
+              className="w-full rounded bg-white p-2 pl-10 text-black"
             />
             <Search className="absolute left-3 top-2.5 text-gray-500" size={20} />
           </div>
-          <button className="flex items-center bg-[#b0cda6] text-black px-4 py-2 rounded">
+          <button className="flex items-center rounded bg-[#b0cda6] px-4 py-2 text-black">
             <Filter size={20} className="mr-2" />
             필터
           </button>
         </div>
 
         {/* Article List */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <article key={item} className="bg-white text-black rounded-lg overflow-hidden shadow-lg">
+            <article
+              key={item}
+              className="overflow-hidden rounded-lg bg-white text-black shadow-lg"
+            >
               <img
                 src={`/placeholder.svg?height=200&width=400`}
                 alt="Article thumbnail"
-                className="w-full h-48 object-cover"
+                className="h-48 w-full object-cover"
               />
               <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">React 최신 기능 살펴보기</h2>
-                <p className="text-gray-600 mb-4">React 18의 새로운 기능과 개선사항에 대해 알아봅니다.</p>
-                <div className="flex justify-between items-center">
+                <h2 className="mb-2 text-xl font-bold">React 최신 기능 살펴보기</h2>
+                <p className="mb-4 text-gray-600">
+                  React 18의 새로운 기능과 개선사항에 대해 알아봅니다.
+                </p>
+                <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">2023년 6월 15일</span>
-                  <button className="flex items-center text-[#036b3f] font-semibold">
+                  <button className="flex items-center font-semibold text-[#036b3f]">
                     읽기
                     <ChevronRight size={20} />
                   </button>
@@ -50,11 +55,11 @@ const ArticlePage = () =>  {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-12 space-x-2">
+        <div className="mt-12 flex justify-center space-x-2">
           {[1, 2, 3, 4, 5].map((page) => (
             <button
               key={page}
-              className={`w-10 h-10 rounded-full ${
+              className={`size-10 rounded-full ${
                 page === 1 ? 'bg-[#b0cda6] text-black' : 'bg-white text-black'
               }`}
             >
@@ -64,7 +69,7 @@ const ArticlePage = () =>  {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
 export default ArticlePage;
