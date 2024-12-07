@@ -1,18 +1,22 @@
+import Image from 'next/image';
 import Link from 'next/link';
+
+import { cn } from '@/lib/cn';
 
 const Header = () => {
   return (
-    <nav className="bg-transparent p-4 text-white">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-2xl font-bold">KUFE</div>
-        <ul className="flex space-x-6">
-          <li>
-            <Link href="/articles">자료 공유</Link>
+    <nav className={cn('bg-[#036b3f] px-6 py-4 text-white')}>
+      <div className={cn('container mx-auto flex items-center justify-between')}>
+        <Link href="/">
+          <Image src="/logo.png" alt="KUFE" width={50} height={50} />
+        </Link>
+        <ul className={cn('flex items-center space-x-6')}>
+          <li className={cn('font-bold hover:text-gray-300')}>
+            <Link href="/articles">아티클 읽기</Link>
           </li>
-          <li>
+          <li className={cn('font-bold hover:text-gray-300')}>
             <Link href="/jobs">채용 공고</Link>
           </li>
-          <li className="rounded bg-[#b0cda6] px-3 py-1 text-black">가입하기</li>
         </ul>
       </div>
     </nav>

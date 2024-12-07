@@ -1,18 +1,19 @@
-import { ChevronRight, Filter, Search } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Filter, Search } from 'lucide-react';
+import { Suspense } from 'react';
 
 import { cn } from '@/lib/cn';
 import getArticles from '@/lib/supabase/getArticles';
 
-const ArticlePage = async () => {
-  const articles = await getArticles();
+import { ArticleList, ArticlePagination } from './_components';
+
+const ArticlePage = async ({ searchParams }: { searchParams: { page?: string } }) => {
+  const page = Number(searchParams.page) || 1;
+  const { articles, totalPages, currentPage } = await getArticles({ page });
 
   return (
     <div className={cn('min-h-screen bg-[#036b3f] font-sans text-white')}>
       <main className={cn('container mx-auto px-4')}>
-        <h1 className={cn('mb-8 text-4xl font-bold')}>개발 아티클</h1>
-
+        <h1 className={cn('mb-8 text-4xl font-bold')}>아티클</h1>
         <div className={cn('mb-8 flex space-x-4')}>
           <div className={cn('relative grow')}>
             <input
@@ -28,56 +29,10 @@ const ArticlePage = async () => {
           </button>
         </div>
 
-        <div className={cn('grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3')}>
-          {articles?.map((article) => (
-            <article
-              key={article.id}
-              className={cn('overflow-hidden rounded-lg bg-white text-black shadow-lg')}
-            >
-              <div className={cn('relative aspect-video w-full')}>
-                <Image
-                  src={article.thumbnail ?? '/placeholder.svg'}
-                  alt={article.title ?? 'Article thumbnail'}
-                  fill
-                  unoptimized={!article.thumbnail}
-                />
-              </div>
-              <div className={cn('p-4')}>
-                <h2 className={cn('mb-2 line-clamp-2 min-h-14 text-xl font-bold')}>
-                  {article.title}
-                </h2>
-                <p className={cn('mb-4 line-clamp-2 text-gray-600')}>{article.description}</p>
-                <div className={cn('flex items-center justify-between')}>
-                  <span className={cn('text-sm text-gray-500')}>{article.createdAt}</span>
-                  <Link
-                    target="_blank"
-                    href={article.url}
-                    className={cn(
-                      'flex items-center font-semibold text-[#036b3f] hover:text-[#036b3f]/80',
-                    )}
-                  >
-                    읽기
-                    <ChevronRight size={20} />
-                  </Link>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className={cn('mt-12 flex justify-center space-x-2')}>
-          {[1, 2, 3, 4, 5].map((page) => (
-            <button
-              key={page}
-              className={cn(
-                'size-10 rounded-full',
-                page === 1 ? 'bg-[#b0cda6] text-black' : 'bg-white text-black',
-              )}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ArticleList articles={articles} />
+          <ArticlePagination currentPage={currentPage} totalPages={totalPages} />
+        </Suspense>
       </main>
     </div>
   );
