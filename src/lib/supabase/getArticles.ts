@@ -12,7 +12,7 @@ type Article = {
   thumbnail?: string;
 };
 
-async function getMetadata(url: string) {
+const getMetadata = async (url: string) => {
   try {
     const { result } = await ogs({ url });
     return {
@@ -28,9 +28,16 @@ async function getMetadata(url: string) {
       thumbnail: undefined,
     };
   }
-}
+};
 
 const camelize = (articles: Article[]) => articles.map((article) => camelcaseKeys(article));
+
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
 const getArticles = async () => {
   const supabase = await createClient();
@@ -42,6 +49,7 @@ const getArticles = async () => {
       return {
         ...article,
         ...metadata,
+        created_at: formatDate(article.created_at),
       };
     }),
   );
