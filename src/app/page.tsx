@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpen, Calendar, ChevronDown, Code, MessageSquare, Users } from 'lucide-react';
+import { BookOpen, Calendar, Code, MessageSquare, Users } from 'lucide-react';
 import Image from 'next/image';
 
 import { cn } from '@/lib/cn';
@@ -9,31 +9,38 @@ const KufeWebsite = () => {
   return (
     <div className={cn('min-h-screen bg-[#036b3f] font-sans text-white')}>
       <main className={cn('container mx-auto flex flex-col items-center')}>
-        <h1>
-          <Image src="/logo.png" alt="KUFE" width={300} height={300} />
+        <h1 className={cn('py-8')}>
+          <Image
+            src="/logo.png"
+            alt="KUFE"
+            width={300}
+            height={300}
+            className="h-auto w-[180px] md:w-[300px]"
+            priority
+          />
         </h1>
         <p className={cn('mb-8 text-2xl')}>건국대학교 프론트엔드 개발자 커뮤니티</p>
         {/* Feature Icons */}
-        <div className={cn('mb-16 flex justify-center space-x-12')}>
+        <div className={cn('mb-16 flex justify-center space-x-6 md:space-x-12')}>
           <div className={cn('flex flex-col items-center')}>
-            <Code size={48} className={cn('mb-2')} />
-            <span>코딩 리뷰</span>
+            <Code className={cn('mb-2 size-6 md:size-12')} />
+            <span className={cn('text-sm md:text-base')}>코드 리뷰</span>
           </div>
           <div className={cn('flex flex-col items-center')}>
-            <Users size={48} className={cn('mb-2')} />
-            <span>네트워킹</span>
+            <Users className={cn('mb-2 size-6 md:size-12')} />
+            <span className={cn('text-sm md:text-base')}>네트워킹</span>
           </div>
           <div className={cn('flex flex-col items-center')}>
-            <Calendar size={48} className={cn('mb-2')} />
-            <span>정기 모임</span>
+            <Calendar className={cn('mb-2 size-4 md:size-12')} />
+            <span className={cn('text-sm md:text-base')}>정기 모임</span>
           </div>
           <div className={cn('flex flex-col items-center')}>
-            <BookOpen size={48} className={cn('mb-2')} />
-            <span>스터디</span>
+            <BookOpen className={cn('mb-2 size-4 md:size-12')} />
+            <span className={cn('text-sm md:text-base')}>스터디</span>
           </div>
           <div className={cn('flex flex-col items-center')}>
-            <MessageSquare size={48} className={cn('mb-2')} />
-            <span>멘토링</span>
+            <MessageSquare className={cn('mb-2 size-4 md:size-12')} />
+            <span className={cn('text-sm md:text-base')}>멘토링</span>
           </div>
         </div>
 
@@ -61,11 +68,6 @@ const KufeWebsite = () => {
             )}
             title="CSS"
           ></div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className={cn('mt-12 animate-bounce')}>
-          <ChevronDown size={32} />
         </div>
       </main>
     </div>
