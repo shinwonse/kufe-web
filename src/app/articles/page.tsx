@@ -6,8 +6,13 @@ import getArticles from '@/lib/supabase/getArticles';
 
 import { ArticleList, ArticlePagination } from './_components';
 
-const ArticlePage = async ({ searchParams }: { searchParams: { page?: string } }) => {
-  const page = Number(searchParams.page) || 1;
+type PageProps = {
+  searchParams: Promise<{ page?: string }>;
+};
+
+const ArticlePage = async ({ searchParams }: PageProps) => {
+  const resolvedParams = await searchParams;
+  const page = Number(resolvedParams.page) || 1;
   const { articles, totalPages, currentPage } = await getArticles({ page });
 
   return (
