@@ -1,8 +1,11 @@
-'use client';
-
 import { ChevronRight, Filter, Search } from 'lucide-react';
+import Image from 'next/image';
 
-const ArticlePage = () => {
+import getArticles from '@/lib/supabase/getArticles';
+
+const ArticlePage = async () => {
+  const articles = await getArticles();
+
   return (
     <div className="min-h-screen bg-[#036b3f] font-sans text-white">
       {/* Main Content */}
@@ -27,23 +30,20 @@ const ArticlePage = () => {
 
         {/* Article List */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {articles?.map((article) => (
             <article
-              key={item}
+              key={article.id}
               className="overflow-hidden rounded-lg bg-white text-black shadow-lg"
             >
               <img
-                src={`/placeholder.svg?height=200&width=400`}
-                alt="Article thumbnail"
-                className="h-48 w-full object-cover"
+                src={article.thumbnail ?? '/placeholder.svg'}
+                alt={article.title ?? 'Article thumbnail'}
               />
               <div className="p-4">
-                <h2 className="mb-2 text-xl font-bold">React 최신 기능 살펴보기</h2>
-                <p className="mb-4 text-gray-600">
-                  React 18의 새로운 기능과 개선사항에 대해 알아봅니다.
-                </p>
+                <h2 className="mb-2 text-xl font-bold">{article.title}</h2>
+                <p className="mb-4 text-gray-600">{article.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">2023년 6월 15일</span>
+                  <span className="text-sm text-gray-500">{article.createdAt}</span>
                   <button className="flex items-center font-semibold text-[#036b3f]">
                     읽기
                     <ChevronRight size={20} />
