@@ -17,10 +17,10 @@ const ArticleList = ({ articles }: { articles: Article[] }) => {
         >
           <div className={cn('relative aspect-video w-full')}>
             <Image
-              src={article.thumbnail ?? '/placeholder.png'}
+              src={article.imageUrl ?? '/placeholder.png'}
               alt={article.title ?? 'Article thumbnail'}
               fill
-              unoptimized={!article.thumbnail}
+              unoptimized={!article.imageUrl}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = '/placeholder.png';

@@ -36,7 +36,9 @@ const ArticlePage = async ({ searchParams }: PageProps) => {
 
         <Suspense fallback={<div>Loading...</div>}>
           <ArticleList articles={articles} />
-          <ArticlePagination currentPage={currentPage} totalPages={totalPages} />
+          <div className={cn('py-8')}>
+            <ArticlePagination currentPage={currentPage} totalPages={totalPages} />
+          </div>
         </Suspense>
       </main>
     </div>

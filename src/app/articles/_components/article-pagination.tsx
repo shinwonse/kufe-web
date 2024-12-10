@@ -5,12 +5,12 @@ import { useCallback } from 'react';
 
 import { cn } from '@/lib/cn';
 
-interface ArticlePaginationProps {
+type ArticlePaginationProps = {
   currentPage: number;
   totalPages: number;
-}
+};
 
-export default function ArticlePagination({ currentPage, totalPages }: ArticlePaginationProps) {
+const ArticlePagination = ({ currentPage, totalPages }: ArticlePaginationProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -24,7 +24,7 @@ export default function ArticlePagination({ currentPage, totalPages }: ArticlePa
   );
 
   return (
-    <div className={cn('mt-12 flex justify-center space-x-2')}>
+    <div className={cn('flex justify-center space-x-2')}>
       {totalPages > 0 && (
         <>
           {/* Page Numbers */}
@@ -70,4 +70,6 @@ export default function ArticlePagination({ currentPage, totalPages }: ArticlePa
       )}
     </div>
   );
-}
+};
+
+export default ArticlePagination;
