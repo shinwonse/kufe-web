@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { Header } from '@/components';
+import { cn } from '@/lib/cn';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -28,9 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={cn(`${geistSans.variable} ${geistMono.variable} antialiased`)}>
         <Header />
-        <main>{children}</main>
+        <main className={cn('overflow-x-hidden')}>{children}</main>
       </body>
     </html>
   );

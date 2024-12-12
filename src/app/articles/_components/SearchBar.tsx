@@ -7,7 +7,7 @@ import { useTransition } from 'react';
 
 import { cn } from '@/lib/cn';
 
-export const SearchBar = () => {
+const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -54,3 +54,5 @@ export const SearchBar = () => {
     </form>
   );
 };
+
+export default SearchBar;

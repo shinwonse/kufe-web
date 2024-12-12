@@ -9,6 +9,7 @@ export type Article = {
   title?: string;
   description?: string;
   imageUrl?: string;
+  tags?: string[];
 };
 
 const camelize = (articles: any[]) => articles.map((article) => camelcaseKeys(article));
@@ -24,10 +25,11 @@ type PageParams = {
   page?: number;
   size?: number;
   search?: string;
+  tags?: string[];
 };
 
 const getArticles = async (params: PageParams = {}) => {
-  const { page = 1, size = 12, search } = params;
+  const { page = 1, size = 12, search, tags } = params;
   const supabase = await createClient();
 
   const start = (page - 1) * size;
@@ -40,12 +42,17 @@ const getArticles = async (params: PageParams = {}) => {
     query = query.or(`title.ilike.*${searchTerm}*,description.ilike.*${searchTerm}*`);
   }
 
+  if (tags && tags.length > 0) {
+    query = query.contains('tags', tags);
+  }
+
   const {
     data: articles = [],
     count,
     error,
   } = await query.range(start, end).order('created_at', { ascending: false });
 
+  console.log(articles);
   if (error) {
     console.error('Supabase query error:', error);
   }
