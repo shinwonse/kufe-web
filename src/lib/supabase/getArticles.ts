@@ -23,21 +23,32 @@ const formatDate = (date: string) =>
 type PageParams = {
   page?: number;
   size?: number;
+  search?: string;
 };
 
 const getArticles = async (params: PageParams = {}) => {
-  const { page = 1, size = 12 } = params;
-
+  const { page = 1, size = 12, search } = params;
   const supabase = await createClient();
 
   const start = (page - 1) * size;
   const end = start + size - 1;
 
-  const { data: articles = [], count } = await supabase
-    .from('articles_metadata')
-    .select('*', { count: 'exact' })
-    .range(start, end)
-    .order('created_at', { ascending: false });
+  let query = supabase.from('articles_metadata').select('*', { count: 'exact' });
+
+  if (search) {
+    const searchTerm = search.replace(/[%_]/g, '\\$&');
+    query = query.or(`title.ilike.*${searchTerm}*,description.ilike.*${searchTerm}*`);
+  }
+
+  const {
+    data: articles = [],
+    count,
+    error,
+  } = await query.range(start, end).order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Supabase query error:', error);
+  }
 
   const formattedArticles = camelize(articles ?? []).map((article) => ({
     ...article,
