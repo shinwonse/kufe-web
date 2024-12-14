@@ -29,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(`${geistSans.variable} ${geistMono.variable} antialiased`)}>
+      <body
+        className={cn('bg-[#036b3f]', `${geistSans.variable} ${geistMono.variable} antialiased`)}
+      >
         <Header />
         <main className={cn('overflow-x-hidden')}>{children}</main>
       </body>

@@ -5,7 +5,7 @@ import { cn } from '@/lib/cn';
 
 const Header = () => {
   return (
-    <nav className={cn('bg-[#036b3f] px-6 py-4 text-white')}>
+    <nav className={cn('flex h-16 flex-row items-center bg-black/20 px-4 text-white')}>
       <div className={cn('container mx-auto flex items-center justify-between')}>
         <Link href="/">
           <Image src="/logo.png" alt="KUFE" width={50} height={50} />
