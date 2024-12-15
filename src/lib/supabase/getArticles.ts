@@ -52,7 +52,6 @@ const getArticles = async (params: PageParams = {}) => {
     error,
   } = await query.range(start, end).order('created_at', { ascending: false });
 
-  console.log(articles);
   if (error) {
     console.error('Supabase query error:', error);
   }

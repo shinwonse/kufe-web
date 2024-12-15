@@ -22,21 +22,19 @@ const ArticlePage = async ({ searchParams }: PageProps) => {
   });
 
   return (
-    <div className={cn('min-h-screen bg-[#036b3f] font-sans text-white')}>
-      <main className={cn('container mx-auto px-4')}>
-        <h1 className={cn('mb-8 text-4xl font-bold')}>아티클</h1>
-        <div className={cn('mb-8 flex space-x-4')}>
-          <SearchBar />
-          <FilterButton />
-        </div>
+    <div className={cn('container mx-auto min-h-screen bg-[#036b3f] px-4 font-sans text-white')}>
+      <h1 className={cn('py-8 text-4xl font-bold')}>아티클</h1>
+      <div className={cn('mb-8 flex space-x-4')}>
+        <SearchBar />
+        <FilterButton />
+      </div>
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <ArticleList articles={articles} />
-          <div className={cn('py-8')}>
-            <ArticlePagination currentPage={currentPage} totalPages={totalPages} />
-          </div>
-        </Suspense>
-      </main>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ArticleList articles={articles} />
+        <div className={cn('py-8')}>
+          <ArticlePagination currentPage={currentPage} totalPages={totalPages} />
+        </div>
+      </Suspense>
     </div>
   );
 };
