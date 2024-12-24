@@ -10,14 +10,17 @@ type PageProps = {
 };
 
 const JobsPage = async ({ searchParams }: PageProps) => {
-  const page = Number(searchParams.page) || 1;
-  const search = searchParams.search;
-  const category = searchParams.category;
+  const params = await Promise.resolve(searchParams);
+  const page = Number(params.page) || 1;
+  const search = params.search;
+  const category = params.category;
 
   const { jobs, totalPages, currentPage } = await getJobs({
     page,
     search,
   });
+
+  console.log(jobs);
 
   return (
     <div className="min-h-screen bg-[#036b3f] font-sans text-white">
@@ -30,7 +33,7 @@ const JobsPage = async ({ searchParams }: PageProps) => {
         </div>
 
         <Suspense fallback={<div>Loading...</div>}>
-          {/* <JobList jobs={jobs} /> */}
+          <JobList jobs={jobs} />
           {/* <div className="py-8">
             <JobPagination currentPage={currentPage} totalPages={totalPages} />
           </div> */}
