@@ -22,18 +22,18 @@ const JobsPage = async ({ searchParams }: PageProps) => {
   console.log(jobs);
 
   return (
-    <div className="min-h-screen bg-[#036b3f] font-sans text-white">
-      <main className="container mx-auto px-4">
-        <h1 className="py-8 text-4xl font-bold">프론트엔드 개발자 채용 공고</h1>
+    <div className={cn('min-h-screen bg-[#036b3f] font-sans text-white')}>
+      <main className={cn('container mx-auto px-4')}>
+        <h1 className={cn('py-8 text-4xl font-bold')}>프론트엔드 개발자 채용 공고</h1>
 
-        <div className="mb-8 flex space-x-4">
+        <div className={cn('mb-8 flex space-x-4')}>
           <SearchBar />
           <FilterButton />
         </div>
 
         <Suspense fallback={<div>Loading...</div>}>
           <JobList jobs={jobs} />
-          {/* <div className="py-8">
+          {/* <div className={cn("py-8")}>
             <JobPagination currentPage={currentPage} totalPages={totalPages} />
           </div> */}
         </Suspense>

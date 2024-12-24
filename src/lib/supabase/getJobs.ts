@@ -2,6 +2,22 @@ import camelcaseKeys from 'camelcase-keys';
 
 import { createClient } from './server';
 
+type RawJob = {
+  id: string;
+  created_at: string;
+  company_name: string;
+  position: string;
+  job_type: '정규직' | '계약직' | '인턴';
+  image_url: string;
+  title: string;
+  description: string;
+  experience: string;
+  start_date: string;
+  end_date: string;
+  is_always: boolean;
+  url: string;
+};
+
 export type Job = {
   id: string;
   createdAt: string;
@@ -12,9 +28,13 @@ export type Job = {
   title: string;
   description: string;
   experience: string;
+  startDate: string;
+  endDate: string;
+  isAlways: boolean;
+  url: string;
 };
 
-const camelize = (jobs: any[]) => jobs.map((job) => camelcaseKeys(job));
+const camelize = (jobs: RawJob[]) => jobs.map((job) => camelcaseKeys(job));
 
 const formatDate = (date: string) =>
   new Date(date).toLocaleDateString('ko-KR', {
@@ -62,6 +82,9 @@ const getJobs = async (params: PageParams = {}) => {
   const formattedJobs = camelize(jobs ?? []).map((job) => ({
     ...job,
     createdAt: formatDate(job.createdAt),
+    startDate: formatDate(job.startDate),
+    endDate: formatDate(job.endDate),
+    isAlways: job.isAlways ?? false,
   }));
 
   return {
