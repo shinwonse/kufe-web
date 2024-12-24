@@ -6,16 +6,13 @@ import getJobs from '@/lib/supabase/getJobs';
 import { FilterButton, JobList, SearchBar } from './_components';
 
 type PageProps = {
-  searchParams: {
-    page?: string;
-    search?: string;
-    category?: string;
-  };
+  searchParams: Promise<{ page?: string; search?: string; category?: string }>;
 };
 
 const JobsPage = async ({ searchParams }: PageProps) => {
-  const page = Number(searchParams.page) || 1;
-  const search = searchParams.search;
+  const resolvedParams = await searchParams;
+  const page = Number(resolvedParams.page) || 1;
+  const search = resolvedParams.search;
 
   const { jobs, totalPages, currentPage } = await getJobs({
     page,

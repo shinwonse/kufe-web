@@ -59,7 +59,7 @@ const getJobs = async (params: PageParams = {}) => {
 
   console.log(jobs);
 
-  const formattedJobs = camelize(jobs).map((job) => ({
+  const formattedJobs = camelize(jobs ?? []).map((job) => ({
     ...job,
     createdAt: formatDate(job.createdAt),
   }));
