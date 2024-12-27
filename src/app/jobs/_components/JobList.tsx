@@ -12,7 +12,7 @@ type JobListProps = {
 
 const JobList = ({ jobs }: JobListProps) => {
   return (
-    <div className={cn('grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3')}>
+    <div className={cn('grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4')}>
       {jobs.map((job) => (
         <Link
           key={job.id}
@@ -25,8 +25,8 @@ const JobList = ({ jobs }: JobListProps) => {
           <article>
             <div className={cn('relative aspect-video w-full')}>
               <Image
-                src={job.imageUrl ?? '/placeholder.png'}
-                alt={job.title ?? 'Article thumbnail'}
+                src={job.imageUrl || '/placeholder.png'}
+                alt={job.title || 'Article thumbnail'}
                 fill
                 unoptimized={!job.imageUrl}
                 onError={(e) => {

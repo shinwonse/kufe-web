@@ -77,8 +77,6 @@ const getJobs = async (params: PageParams = {}) => {
     throw new Error('Failed to fetch jobs');
   }
 
-  console.log(jobs);
-
   const formattedJobs = camelize(jobs ?? []).map((job) => ({
     ...job,
     createdAt: formatDate(job.createdAt),
