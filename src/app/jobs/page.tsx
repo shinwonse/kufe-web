@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { cn } from '@/lib/cn';
 import getJobs from '@/lib/supabase/getJobs';
 
-import { FilterButton, JobList, SearchBar } from './_components';
+import { FilterButton, JobList, JobPagination, SearchBar } from './_components';
 
 type PageProps = {
   searchParams: Promise<{ page?: string; search?: string; category?: string }>;
@@ -31,9 +31,9 @@ const JobsPage = async ({ searchParams }: PageProps) => {
 
         <Suspense fallback={<div>Loading...</div>}>
           <JobList jobs={jobs} />
-          {/* <div className={cn("py-8")}>
+          <div className={cn('py-8')}>
             <JobPagination currentPage={currentPage} totalPages={totalPages} />
-          </div> */}
+          </div>
         </Suspense>
       </main>
     </div>
