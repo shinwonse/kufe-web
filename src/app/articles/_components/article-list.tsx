@@ -15,12 +15,12 @@ const ArticleList = ({ articles }: { articles: Article[] }) => {
           target="_blank"
           href={article.url}
           className={cn(
-            'flex items-center justify-end font-semibold text-[#036b3f] hover:text-[#036b3f]/80',
+            'block overflow-hidden rounded-lg bg-white text-black shadow-lg transition-shadow hover:shadow-xl',
           )}
         >
           <article
             key={article.id}
-            className={cn('overflow-hidden rounded-lg bg-white text-black shadow-lg')}
+            className={cn('h-full overflow-hidden rounded-lg bg-white text-black shadow-lg')}
           >
             <div className={cn('relative aspect-video w-full')}>
               <Image
@@ -34,11 +34,9 @@ const ArticleList = ({ articles }: { articles: Article[] }) => {
                 }}
               />
             </div>
-            <div className={cn('p-4')}>
-              <h2 className={cn('mb-2 line-clamp-2 min-h-14 text-xl font-bold')}>
-                {article.title}
-              </h2>
-              <p className={cn('mb-4 line-clamp-2 text-gray-600')}>{article.description}</p>
+            <div className={cn('flex flex-col gap-2 p-4')}>
+              <h2 className={cn('line-clamp-2 min-h-12 text-xl font-bold')}>{article.title}</h2>
+              <p className={cn('line-clamp-2 min-h-12 text-gray-600')}>{article.description}</p>
             </div>
           </article>
         </Link>
