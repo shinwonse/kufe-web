@@ -1,3 +1,3 @@
-export { default as FilterButton } from './FilterButton';
-export { default as JobList } from './JobList';
-export { default as SearchBar } from './SearchBar';
+export { default as FilterButton } from './filter-button';
+export { default as JobList } from './job-list';
+export { default as SearchBar } from './search-bar';

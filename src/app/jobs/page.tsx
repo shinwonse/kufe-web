@@ -19,12 +19,10 @@ const JobsPage = async ({ searchParams }: PageProps) => {
     search,
   });
 
-  console.log(jobs);
-
   return (
     <div className={cn('min-h-screen bg-[#036b3f] font-sans text-white')}>
       <main className={cn('container mx-auto px-4')}>
-        <h1 className={cn('py-8 text-4xl font-bold')}>프론트엔드 개발자 채용 공고</h1>
+        <h1 className={cn('py-8 text-4xl font-bold')}>채용 공고</h1>
 
         <div className={cn('mb-8 flex space-x-4')}>
           <SearchBar />
